@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 
 class LogContainer extends StatelessWidget{
 
@@ -15,8 +16,8 @@ class LogContainer extends StatelessWidget{
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Color(0xFF1b4170),
-                Color(0xFF76e6da),
+                Styles.primaryColor,
+                Styles.secondaryColor,
               ]
           )
       ),

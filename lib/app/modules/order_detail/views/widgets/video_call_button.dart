@@ -24,7 +24,7 @@ Widget videoCallButton(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: active == true
-                ? [Styles.secondaryBlueColor, Styles.primaryBlueColor]
+                ? [Styles.secondaryColor, Styles.primaryColor]
                 : [Colors.grey, Colors.grey],
           )),
       child: Row(

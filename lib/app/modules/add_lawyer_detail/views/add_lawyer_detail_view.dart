@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/pages/chose_lawyer_category_page.dart';
 import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/widgets/display_image.dart';
 import 'package:mohamoon_mohamoon/app/modules/login/views/widgets/submit_button.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 import '../controllers/add_lawyer_detail_controller.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -122,7 +123,7 @@ class AddLawyerDetailView extends GetView<AddLawyerDetailController> {
                 SizedBox(height: 10),
                 TextButton(
                   style: TextButton.styleFrom(
-                    primary: Colors.blue,
+                    primary: Styles.primaryColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
                     backgroundColor: Color(0xFFF5F6F9),

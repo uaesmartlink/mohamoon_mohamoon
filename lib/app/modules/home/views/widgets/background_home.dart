@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 
 class BackgroundHome extends StatelessWidget{
 
@@ -26,7 +27,7 @@ class BackgroundHome extends StatelessWidget{
                       end: Alignment.topRight,
                       colors: [
                         Color(0xFF76e6da),
-                        Color(0xFF1b4170),
+                        Styles.primaryColor,
                       ]
                   )
               ),

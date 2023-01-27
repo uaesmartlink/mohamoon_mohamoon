@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 
 Widget submitButton({required VoidCallback onTap, required String text}) {
   return InkWell(
@@ -9,7 +10,7 @@ Widget submitButton({required VoidCallback onTap, required String text}) {
       padding: EdgeInsets.symmetric(vertical: 15),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Color(0xFF125a9a),
+        color: Styles.thirdlyColor,
         borderRadius: BorderRadius.all(Radius.circular(17)),
       ),
       child: Text(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 import '../../widgets/log_container.dart';
 import '../controllers/login_controller.dart';
 import 'widgets/divider.dart';
@@ -77,7 +78,7 @@ class LoginView extends GetView<LoginController> {
                                       controller.passwordVisible
                                           ? Icons.visibility
                                           : Icons.visibility_off,
-                                      color: Color(0xFF1b4170),),
+                                      color: Styles.thirdlyColor,),
                                   onPressed: () {
                                     controller.passwordIconVisibility();
                                   },

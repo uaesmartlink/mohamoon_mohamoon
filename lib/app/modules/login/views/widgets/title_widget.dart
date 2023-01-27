@@ -16,7 +16,7 @@ Widget titleApp() {
       RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-            text: 'Tatbeeb for'.tr,
+            text: 'Mohamoon for'.tr,
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,

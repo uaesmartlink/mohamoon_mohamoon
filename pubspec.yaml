@@ -45,7 +45,8 @@ dependencies:
     git: https://github.com/amsyary/flutter_firebase_chat_core.git
   jiffy: ^5.0.0
   flutter_local_notifications: ^9.4.0
-  firebase_messaging: ^11.2.10
+  firebase_core_platform_interface: 4.5.1
+  firebase_messaging: ^13.0.4
   dropdown_search: ^2.0.1
   json_serializable: ^6.1.5
   json_annotation: ^4.4.0

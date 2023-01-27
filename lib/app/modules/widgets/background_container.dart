@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 
 class BackgroundContainer extends StatelessWidget{
   final Widget widget;
@@ -28,7 +29,7 @@ class BackgroundContainer extends StatelessWidget{
                       end: Alignment.topRight,
                       colors: [
                         Color(0xFF76e6da),
-                        Color(0xFF1b4170),
+                        Styles.primaryColor,
                       ]
                   )
               ),
@@ -45,7 +46,7 @@ class BackgroundContainer extends StatelessWidget{
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(9)),
                       ),
-                      child: Icon(Icons.arrow_back_ios, color: Color(0xFF1b4170),size: 15,),
+                      child: Icon(Icons.arrow_back_ios, color: Styles.thirdlyColor,size: 15,),
                     ),
                   ),
                   Text(text,

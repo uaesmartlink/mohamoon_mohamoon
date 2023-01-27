@@ -22,9 +22,9 @@ Widget createAccountLabel(VoidCallback onTap) {
           Text(
             'Register'.tr,
             style: TextStyle(
-                color: Color(0xFF125a9a),
+                color: Styles.mFillColor,
                 fontSize: 18,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w900),
           ),
         ],
       ),

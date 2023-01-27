@@ -201,7 +201,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
                       showLabel: true,
                       longDateName: true,
                       style: GoogleFonts.nunito(
-                          color: Styles.primaryBlueColor, fontSize: 15),
+                          color: Styles.primaryColor, fontSize: 15),
                     ),
                   )),
               SizedBox(

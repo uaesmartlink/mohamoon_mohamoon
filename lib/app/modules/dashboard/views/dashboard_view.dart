@@ -52,7 +52,7 @@ class DashboardView extends GetView<DashboardController> {
                         Icons.home,
                         //darken the icon if it is selected or else give it a different color
                         color: controller.selectedIndex == 0
-                            ? Color(0xFF1b4170)
+                            ? Styles.thirdlyColor
                             : Colors.grey.shade400,
                       ),
                     ),
@@ -65,7 +65,7 @@ class DashboardView extends GetView<DashboardController> {
                       icon: Icon(
                         Icons.calendar_today,
                         color: controller.selectedIndex == 1
-                            ? Color(0xFF1b4170)
+                            ? Styles.thirdlyColor
                             : Colors.grey.shade400,
                       ),
                     ),
@@ -78,7 +78,7 @@ class DashboardView extends GetView<DashboardController> {
                       icon: Icon(
                         Icons.format_list_bulleted,
                         color: controller.selectedIndex == 2
-                            ? Color(0xFF1b4170)
+                            ? Styles.thirdlyColor
                             : Colors.grey.shade400,
                       ),
                     ),
@@ -90,7 +90,7 @@ class DashboardView extends GetView<DashboardController> {
                       icon: Icon(
                         Icons.person,
                         color: controller.selectedIndex == 3
-                            ? Color(0xFF1b4170)
+                            ? Styles.thirdlyColor
                             : Colors.grey.shade400,
                       ),
                     ),

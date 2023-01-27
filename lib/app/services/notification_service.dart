@@ -49,7 +49,7 @@ class NotificationService {
         android: AndroidNotificationDetails(channel.id, channel.name,
             channelDescription: channel.description,
             importance: Importance.high,
-            color: Styles.primaryBlueColor,
+            color: Styles.primaryColor,
             icon: '@mipmap/ic_launcher'),
       ),
     );
@@ -67,7 +67,7 @@ class NotificationService {
           NotificationDetails(
             android: AndroidNotificationDetails(channel.id, channel.name,
                 channelDescription: channel.description,
-                color: Styles.primaryBlueColor,
+                color: Styles.primaryColor,
                 playSound: true,
                 icon: '@mipmap/ic_launcher'),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 import '../../widgets/background_container.dart';
@@ -30,7 +31,7 @@ class AppointmentView extends GetView<AppointmentController> {
                         headerStyle: HeaderStyle(
                           titleCentered: true,
                           formatButtonDecoration: BoxDecoration(
-                            color: Color(0xFF1b4170),
+                            color: Styles.primaryColor,
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           formatButtonTextStyle: TextStyle(color: Colors.white),
@@ -163,7 +164,7 @@ class AppointmentView extends GetView<AppointmentController> {
           },
           label: Text('Add Timeslot'.tr),
           icon: Icon(Icons.add),
-          backgroundColor: Color(0xFF1b4170),
+          backgroundColor: Styles.primaryColor,
         ));
   }
 }
