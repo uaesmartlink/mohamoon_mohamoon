@@ -14,9 +14,15 @@ class LawyerService {
       required String shortBiography,
       required String pictureUrl,
       required String certificateUrl,
-      required LawyerCategory lawyerCategory,
+      required List<String> categories,
       bool isUpdate = false}) async {
     try {
+      List cat = [];
+      for (int i = 0; i < categories.length; i++) {
+        cat.add({
+          "name": categories[i],
+        });
+      }
       CollectionReference lawyers = FirebaseFirestore.instance.collection('Lawyers');
       Map<String, dynamic> lawyersData = {
         'lawyerName': lawyerName,
@@ -25,10 +31,7 @@ class LawyerService {
         'lawyerBiography': shortBiography,
         'lawyerPicture': pictureUrl,
         'certificateUrl':certificateUrl,
-        'lawyerCategory': {
-          'categoryId': lawyerCategory.categoryId,
-          'categoryName': lawyerCategory.categoryName
-        },
+        'categories': FieldValue.arrayUnion(categories),
         'lawyerBasePrice': 10,
         'accountStatus': 'nonactive'
       };
@@ -38,6 +41,7 @@ class LawyerService {
         await lawyers.doc(LawyerService.lawyer!.lawyerId).update(lawyersData);
         await getLawyer(forceGet: true);
       } else {
+
         lawyersData['createdAt'] = FieldValue.serverTimestamp();
         lawyersData['updatedAt'] = FieldValue.serverTimestamp();
         var lawyer = await lawyers.add(lawyersData);
@@ -52,10 +56,11 @@ class LawyerService {
   ///[forceGet] if true will force get from server even if current lawyer is not null
   Future<Lawyer?> getLawyer({bool forceGet = false}) async {
     try {
+      print("SSSSSS");
+
       if (LawyerService.lawyer != null && forceGet == false) {
         return LawyerService.lawyer;
       }
-
       var lawyerId = await UserService().getLawyerId();
       var lawyerReference = await FirebaseFirestore.instance
           .collection('Lawyers')
@@ -66,6 +71,7 @@ class LawyerService {
       data['lawyerId'] = lawyerId;
       Lawyer lawyer = Lawyer.fromJson(data);
       LawyerService.lawyer = lawyer;
+
       LawyerService().currentLawyer = lawyer;
       return lawyer;
     } catch (e) {

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 import '../../widgets/background_container.dart';
 import '../controllers/profile_controller.dart';
 import 'widgets/profile_button.dart';
@@ -64,7 +65,7 @@ class ProfileView extends GetView<ProfileController> {
                     visible: !controller.isAccountActivated,
                     child: Container(
                         height: 30,
-                        color: Colors.red[300],
+                        color: Styles.thirdlyColor,
                         child: Row(
                           children: [
                             SizedBox(

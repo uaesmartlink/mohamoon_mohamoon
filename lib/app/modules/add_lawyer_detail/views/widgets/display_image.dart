@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 
 class DisplayImage extends StatelessWidget {
   final String imagePath;
@@ -10,7 +11,7 @@ class DisplayImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Color.fromRGBO(64, 105, 225, 1);
+    final color = Styles.thirdlyColor;
     return Center(
       child: Stack(
         children: [

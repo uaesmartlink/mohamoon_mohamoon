@@ -20,6 +20,7 @@ import 'package:mohamoon_mohamoon/app/utils/exceptions.dart';
 class AddLawyerDetailController extends GetxController
     with StateMixin<List<LawyerCategory>> {
   //TODO: Implement AddLawyerDetailController
+  final List<bool> selected = List.generate(100, (i) => false);
 
   final count = 0.obs;
 
@@ -28,7 +29,7 @@ class AddLawyerDetailController extends GetxController
   var lawyerPhone = ''.obs;
   var lawyerHospital = 'English';
   var shortBiography = ''.obs;
-  LawyerCategory? lawyerCategory;
+  List<String>? categories = [];
   Lawyer? lawyer = Get.arguments;
   var profilePicUrl = ''.obs;
   var certificateUrl = ''.obs;
@@ -38,6 +39,7 @@ class AddLawyerDetailController extends GetxController
   @override
   void onInit() {
     super.onInit();
+    print(categories);
     if (lawyer != null) {
       isEdit = true;
       profilePicUrl.value = lawyer!.lawyerPicture!;
@@ -45,7 +47,7 @@ class AddLawyerDetailController extends GetxController
       lawyerPhone.value = lawyer!.lawyerPhone!;
       lawyerHospital = lawyer!.lawyerHospital!;
       shortBiography.value = lawyer!.lawyerShortBiography!;
-      lawyerCategory = lawyer!.lawyerCategory!;
+      categories = lawyer!.categories!;
       lawyerCertificateUrl.value = lawyer!.certificateUrl!;
       print(lawyerCertificateUrl.value);
       update();
@@ -110,21 +112,22 @@ class AddLawyerDetailController extends GetxController
 
   void saveLawyerDetail() async {
     if (lawyer == null) {
-      if (profilePicUrl.value.isEmpty) {
+    /*  if (profilePicUrl.value.isEmpty) {
         exceptionToast('Please choose your profile photo'.tr);
         return;
-      }
+      }*/
 
-      if (certificateUrl.value.isEmpty) {
+     /* if (certificateUrl.value.isEmpty) {
         exceptionToast('Please choose your certificate'.tr);
         return;
-      }
-      if (lawyerCategory == null) {
+      }*/
+      if (categories == null) {
         exceptionToast('Please chose lawyer Specialty or Category'.tr);
         return;
       }
     }
-    if (formkey.currentState!.validate() && lawyerCategory != null) {
+
+    if (formkey.currentState!.validate() && categories != null && categories!.isNotEmpty) {
       formkey.currentState!.save();
       EasyLoading.show(
           status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
@@ -136,12 +139,13 @@ class AddLawyerDetailController extends GetxController
             shortBiography: shortBiography.value,
             pictureUrl: profilePicUrl.value,
             certificateUrl: certificateUrl.value,
-            lawyerCategory: lawyerCategory!,
-            isUpdate: isEdit);
+            categories: categories!,
+            isUpdate: isEdit,);
         EasyLoading.dismiss();
         Get.offNamed('/dashboard');
 
       } catch (e) {
+
         Fluttertoast.showToast(msg: e.toString());
         EasyLoading.dismiss();
       }

@@ -11,7 +11,7 @@ class Lawyer {
     required this.certificateUrl,
     required this.lawyerPrice,
     required this.lawyerShortBiography,
-    required this.lawyerCategory,
+    required this.categories,
     required this.lawyerHospital,
     required this.lawyerBalance,
     required this.accountStatus,
@@ -34,7 +34,7 @@ class Lawyer {
   String? certificateUrl;
   int? lawyerPrice;
   String? lawyerShortBiography;
-  LawyerCategory? lawyerCategory;
+  List<String>? categories;
   String? lawyerHospital;
   double? lawyerBalance;
   String? accountStatus;
@@ -48,7 +48,7 @@ class Lawyer {
         certificateUrl: data[_certificateUrl],
         lawyerPrice: data[_lawyerPrice],
         lawyerShortBiography: data[_lawyerShortBiography],
-        lawyerCategory: LawyerCategory.fromJson(data[_lawyerCategory]),
+        categories: data[_lawyerCategory],
         lawyerHospital: data[_lawyerHospital],
         lawyerBalance: double.parse(((data[_lawyerBalance])??0.0).toString()),
         accountStatus: data[_accountStatus]);
