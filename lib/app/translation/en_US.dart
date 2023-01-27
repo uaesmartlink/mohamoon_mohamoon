@@ -1,9 +1,9 @@
 const Map<String, String> en = {
-  'App Name': 'Hallo Doctor',
+  'App Name': 'Hallo Lawyer',
   'Hello ': 'Hello ',
   'Welcome Back!': 'Welcome Back!',
-  'Doctor App': 'Doctor App',
-  'Doctor': 'Doctor',
+  'Lawyer App': 'Lawyer App',
+  'Lawyer': 'Lawyer',
   ' App': ' App',
   'Current Balance': 'Current Balance',
   'Balance': 'Balance',
@@ -20,16 +20,16 @@ const Map<String, String> en = {
   'no review': 'no review',
   'See More': 'See More',
   'Order at : ': 'Order at : ',
-  'Add Doctor Information': 'Add Doctor Information',
+  'Add Lawyer Information': 'Add Lawyer Information',
   'Name must be more than two characters':
       'Name must be more than two characters',
-  'Doctor Name e.g : Dr. Maria Alexandra':
-      'Doctor Name e.g : Dr. Maria Alexandra',
+  'Lawyer Name e.g : Dr. Maria Alexandra':
+      'Lawyer Name e.g : Dr. Maria Alexandra',
   'the Hospital, where you work': 'the Hospital, where you work',
   'Short Biography': 'Short Biography',
-  'Chose Doctor Category': 'Chose Doctor Category',
+  'Chose Lawyer Category': 'Chose Lawyer Category',
   'Save': 'Save',
-  'Doctor Category': 'Doctor Category',
+  'Lawyer Category': 'Lawyer Category',
   'Upload a photo of yourself ': 'Upload a photo of yourself ',
   'Update': 'Update',
   'Edit Image': 'Edit Image',
@@ -37,8 +37,8 @@ const Map<String, String> en = {
   'Register': 'Register',
   'Don\'t have an account ?': 'Don\'t have an account ?',
   'Please choose your profile photo': 'Please choose your profile photo',
-  'Please chose doctor Specialty or Category':
-      'Please chose doctor Specialty or Category',
+  'Please chose lawyer Specialty or Category':
+      'Please chose lawyer Specialty or Category',
   'loading...': 'loading...',
   ' Minute': ' Minute',
   'Every Day': 'Every Day',
@@ -130,7 +130,7 @@ const Map<String, String> en = {
   'Logout': 'Logout',
   'Are you sure you want to Logout': 'Are you sure you want to Logout',
   'Your account is still not activated': 'Your account is still not activated',
-  'Edit Doctor Data': 'Edit Doctor Data',
+  'Edit Lawyer Data': 'Edit Lawyer Data',
   'Already have an account ?': 'Already have an account ?',
   'Confim Withdaw': 'Confim Withdaw',
   'Please make sure the data below is correct, we will make a withdrawal after you confirm it':

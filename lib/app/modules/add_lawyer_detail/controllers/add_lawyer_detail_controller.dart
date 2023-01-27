@@ -6,48 +6,48 @@ import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:get_storage/get_storage.dart';
-import 'package:mohamoon_mohamoon/app/models/doctor_category.dart';
-import 'package:mohamoon_mohamoon/app/models/doctor_model.dart';
-import 'package:mohamoon_mohamoon/app/modules/add_doctor_detail/views/pages/edit_image_page.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_category_service.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/models/lawyer_category.dart';
+import 'package:mohamoon_mohamoon/app/models/lawyer_model.dart';
+import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/pages/edit_image_page.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_category_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 
 //import 'package:mohamoon_mohamoon/app/utils/constants.dart';
 import 'package:mohamoon_mohamoon/app/utils/exceptions.dart';
 
 
-class AddDoctorDetailController extends GetxController
-    with StateMixin<List<DoctorCategory>> {
-  //TODO: Implement AddDoctorDetailController
+class AddLawyerDetailController extends GetxController
+    with StateMixin<List<LawyerCategory>> {
+  //TODO: Implement AddLawyerDetailController
 
   final count = 0.obs;
 
   var formkey = GlobalKey<FormState>();
-  var doctorName = ''.obs;
-  var doctorPhone = ''.obs;
-  var doctorHospital = 'English';
+  var lawyerName = ''.obs;
+  var lawyerPhone = ''.obs;
+  var lawyerHospital = 'English';
   var shortBiography = ''.obs;
-  DoctorCategory? doctorCategory;
-  Doctor? doctor = Get.arguments;
+  LawyerCategory? lawyerCategory;
+  Lawyer? lawyer = Get.arguments;
   var profilePicUrl = ''.obs;
   var certificateUrl = ''.obs;
-  var doctorCertificateUrl =''.obs;
+  var lawyerCertificateUrl =''.obs;
   bool isEdit = false;
 
   @override
   void onInit() {
     super.onInit();
-    if (doctor != null) {
+    if (lawyer != null) {
       isEdit = true;
-      profilePicUrl.value = doctor!.doctorPicture!;
-      doctorName.value = doctor!.doctorName!;
-      doctorPhone.value = doctor!.doctorPhone!;
-      doctorHospital = doctor!.doctorHospital!;
-      shortBiography.value = doctor!.doctorShortBiography!;
-      doctorCategory = doctor!.doctorCategory!;
-      doctorCertificateUrl.value = doctor!.certificateUrl!;
-      print(doctorCertificateUrl.value);
+      profilePicUrl.value = lawyer!.lawyerPicture!;
+      lawyerName.value = lawyer!.lawyerName!;
+      lawyerPhone.value = lawyer!.lawyerPhone!;
+      lawyerHospital = lawyer!.lawyerHospital!;
+      shortBiography.value = lawyer!.lawyerShortBiography!;
+      lawyerCategory = lawyer!.lawyerCategory!;
+      lawyerCertificateUrl.value = lawyer!.certificateUrl!;
+      print(lawyerCertificateUrl.value);
       update();
     }
   }
@@ -102,14 +102,14 @@ class AddDoctorDetailController extends GetxController
     updateProfilePic(imageFile!);
   }
 
-  void initDoctorCategory() {
-    DoctorCategoryService().getListDoctorCategory().then((doctorCategory) {
-      change(doctorCategory, status: RxStatus.success());
+  void initLawyerCategory() {
+    LawyerCategoryService().getListLawyerCategory().then((lawyerCategory) {
+      change(lawyerCategory, status: RxStatus.success());
     });
   }
 
-  void saveDoctorDetail() async {
-    if (doctor == null) {
+  void saveLawyerDetail() async {
+    if (lawyer == null) {
       if (profilePicUrl.value.isEmpty) {
         exceptionToast('Please choose your profile photo'.tr);
         return;
@@ -119,24 +119,24 @@ class AddDoctorDetailController extends GetxController
         exceptionToast('Please choose your certificate'.tr);
         return;
       }
-      if (doctorCategory == null) {
-        exceptionToast('Please chose doctor Specialty or Category'.tr);
+      if (lawyerCategory == null) {
+        exceptionToast('Please chose lawyer Specialty or Category'.tr);
         return;
       }
     }
-    if (formkey.currentState!.validate() && doctorCategory != null) {
+    if (formkey.currentState!.validate() && lawyerCategory != null) {
       formkey.currentState!.save();
       EasyLoading.show(
           status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
       try {
-        await DoctorService().saveDoctorDetail(
-            doctorName: doctorName.value,
-            doctorPhone: doctorPhone.value,
-            hospital: doctorHospital,
+        await LawyerService().saveLawyerDetail(
+            lawyerName: lawyerName.value,
+            lawyerPhone: lawyerPhone.value,
+            hospital: lawyerHospital,
             shortBiography: shortBiography.value,
             pictureUrl: profilePicUrl.value,
             certificateUrl: certificateUrl.value,
-            doctorCategory: doctorCategory!,
+            lawyerCategory: lawyerCategory!,
             isUpdate: isEdit);
         EasyLoading.dismiss();
         Get.offNamed('/dashboard');

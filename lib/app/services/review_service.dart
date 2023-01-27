@@ -1,10 +1,10 @@
-import 'package:mohamoon_mohamoon/app/models/doctor_model.dart';
+import 'package:mohamoon_mohamoon/app/models/lawyer_model.dart';
 import 'package:mohamoon_mohamoon/app/models/review_dart.dart';
 
 class ReviewService {
-  Future<List<ReviewModel>> getListReview(Doctor doctor, {int? limit}) async {
+  Future<List<ReviewModel>> getListReview(Lawyer lawyer, {int? limit}) async {
     // QueryBuilder<ReviewModel> query = QueryBuilder<ReviewModel>(ReviewModel());
-    // //   ..whereEqualTo('doctor', doctor.toPointer());
+    // //   ..whereEqualTo('lawyer', lawyer.toPointer());
     // if (limit != null) query.setLimit(limit);
     // ParseResponse apiResponse = await query.query();
     // if (apiResponse.success) {

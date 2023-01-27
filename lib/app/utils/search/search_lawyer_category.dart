@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mohamoon_mohamoon/app/models/doctor_category.dart';
+import 'package:mohamoon_mohamoon/app/models/lawyer_category.dart';
 
-class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
-  late List<DoctorCategory> doctorCategory;
-  late List<DoctorCategory> doctorCategorySugestion;
-  SearchDoctorCategory({
-    required this.doctorCategory,
-    required this.doctorCategorySugestion,
+class SearchLawyerCategory extends SearchDelegate<LawyerCategory> {
+  late List<LawyerCategory> lawyerCategory;
+  late List<LawyerCategory> lawyerCategorySugestion;
+  SearchLawyerCategory({
+    required this.lawyerCategory,
+    required this.lawyerCategorySugestion,
   });
 
   //Action button, right button
@@ -37,7 +37,7 @@ class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
 
   @override
   Widget buildResults(BuildContext context) {
-    var allDoctorCategory = doctorCategory
+    var allLawyerCategory = lawyerCategory
         .where(
           (category) => category.categoryName!.toLowerCase().contains(
                 query.toLowerCase(),
@@ -46,11 +46,11 @@ class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
         .toList();
 
     return ListView.builder(
-      itemCount: allDoctorCategory.length,
+      itemCount: allLawyerCategory.length,
       itemBuilder: (context, index) => ListTile(
-        title: Text(allDoctorCategory[index].categoryName!),
+        title: Text(allLawyerCategory[index].categoryName!),
         onTap: () {
-          close(context, allDoctorCategory[index]);
+          close(context, allLawyerCategory[index]);
         },
       ),
     );
@@ -58,7 +58,7 @@ class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    var allDoctorCategorySuggestion = doctorCategorySugestion
+    var allLawyerCategorySuggestion = lawyerCategorySugestion
         .where(
           (categorySuggestion) =>
               categorySuggestion.categoryName!.toLowerCase().contains(
@@ -68,11 +68,11 @@ class SearchDoctorCategory extends SearchDelegate<DoctorCategory> {
         .toList();
 
     return ListView.builder(
-      itemCount: allDoctorCategorySuggestion.length,
+      itemCount: allLawyerCategorySuggestion.length,
       itemBuilder: (context, index) => ListTile(
-        title: Text(allDoctorCategorySuggestion[index].categoryName!),
+        title: Text(allLawyerCategorySuggestion[index].categoryName!),
         onTap: () {
-          close(context, allDoctorCategorySuggestion[index]);
+          close(context, allLawyerCategorySuggestion[index]);
         },
       ),
     );

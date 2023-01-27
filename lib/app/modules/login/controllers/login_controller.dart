@@ -29,9 +29,9 @@ class LoginController extends GetxController {
       loginFormKey.currentState!.save();
       EasyLoading.show(maskType: EasyLoadingMaskType.black);
       AuthService().login(username, password).then((value) {
-        //Check whether, user is already set his detail doctor in server
-        AuthService().checkDoctorDetail().then((doctorDetail) {
-          if (doctorDetail) GetStorage().write(checkDoctorDetail, true);
+        //Check whether, user is already set his detail lawyer in server
+        AuthService().checkLawyerDetail().then((lawyerDetail) {
+          if (lawyerDetail) GetStorage().write(checkLawyerDetail, true);
           Get.offNamed('/dashboard');
         });
       }).onError((error, stackTrace) {

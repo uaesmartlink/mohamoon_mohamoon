@@ -2,12 +2,12 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/services/auth_service.dart';
 import 'package:mohamoon_mohamoon/app/services/chat_service.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/notification_service.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 import 'package:firebase_database/firebase_database.dart';
 
-import '../../../models/doctor_model.dart';
+import '../../../models/lawyer_model.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
@@ -22,7 +22,7 @@ class ProfileController extends GetxController {
   void onReady() async {
     super.onReady();
     photoUrl.value = await UserService().getPhotoUrl();
-    Doctor? doc = await DoctorService().getDoctor();
+    Lawyer? doc = await LawyerService().getLawyer();
     accountStatus = doc!.accountStatus!;
     if (accountStatus == 'active') {
       isAccountActivated = true;
@@ -41,11 +41,11 @@ class ProfileController extends GetxController {
     Get.toNamed('/balance');
   }
 
-  void toEditDoctorDetail() async {
+  void toEditLawyerDetail() async {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    var doctor = DoctorService.doctor;
+    var lawyer = LawyerService.lawyer;
     EasyLoading.dismiss();
-    Get.toNamed('/add-doctor-detail', arguments: doctor);
+    Get.toNamed('/add-lawyer-detail', arguments: lawyer);
   }
 
   void logout() async {

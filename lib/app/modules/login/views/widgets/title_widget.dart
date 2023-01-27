@@ -23,7 +23,7 @@ Widget titleApp() {
                 color: Colors.white,),
             children: [
               TextSpan(
-                text: ' Doctor'.tr,
+                text: ' Lawyer'.tr,
                 style: TextStyle(color: Colors.white, fontSize: 30),
               ),
             ]),

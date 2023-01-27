@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/models/timeslot_model.dart';
 //import 'package:mohamoon_mohamoon/app/models/withdraw_settings_detail.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/notification_service.dart';
 import 'package:mohamoon_mohamoon/app/services/timeslot_service.dart';
 import 'package:mohamoon_mohamoon/app/services/videocall_service.dart';
@@ -49,7 +49,7 @@ class OrderDetailController extends GetxController {
       await VideoCallService().createRoom(orderedTimeslot.timeSlotId!, roomData);
 
       notificationService.notificationStartAppointment(
-          DoctorService.doctor!.doctorName!,
+          LawyerService.lawyer!.lawyerName!,
           orderedTimeslot.bookByWho!.userId!,
           orderedTimeslot.timeSlotId!,
           token,

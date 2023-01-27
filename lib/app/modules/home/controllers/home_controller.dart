@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mohamoon_mohamoon/app/models/dashboard_model.dart';
-import 'package:mohamoon_mohamoon/app/models/doctor_model.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/models/lawyer_model.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/review_service.dart';
 import 'package:mohamoon_mohamoon/app/services/timeslot_service.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
@@ -22,20 +22,20 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
   @override
   void onReady() async {
     super.onReady();
-    var doctor = await DoctorService().getDoctor();
+    var lawyer = await LawyerService().getLawyer();
 
-    if (doctor == null) {
+    if (lawyer == null) {
       if (await UserService().checkIfUserExist() == false) {
         return Get.offNamed('/login');
       } else {
-        return Get.offNamed('/add-doctor-detail');
+        return Get.offNamed('/add-lawyer-detail');
       }
     }
     username.value = UserService().currentUser!.displayName!;
     UserService().getPhotoUrl().then((urlPicture) => profilePic.value = urlPicture);
 
     await getListAppointment();
-    //await getListReview(doctor);
+    //await getListReview(lawyer);
     getBalance();
   }
 
@@ -43,9 +43,9 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
   void onClose() {}
   void increment() => count.value++;
 
-  //Check whether, user is already set his detail doctor
-  bool checkDetailDoctor() {
-    bool? check = GetStorage().read(checkDoctorDetail);
+  //Check whether, user is already set his detail lawyer
+  bool checkDetailLawyer() {
+    bool? check = GetStorage().read(checkLawyerDetail);
     if (check == null || !check) return false;
     return true;
   }
@@ -64,16 +64,16 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
     }
   }
 
-  getListReview(Doctor doctor) async {
+  getListReview(Lawyer lawyer) async {
     try {
-      dashboardModel.listReview = await ReviewService().getListReview(doctor);
+      dashboardModel.listReview = await ReviewService().getListReview(lawyer);
     } catch (err) {
       printError(info: err.toString());
     }
   }
 
   getBalance() {
-    dashboardModel.balance = DoctorService.doctor!.doctorBalance;
+    dashboardModel.balance = LawyerService.lawyer!.lawyerBalance;
     change(dashboardModel, status: RxStatus.success());
   }
 }

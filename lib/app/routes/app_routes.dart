@@ -9,7 +9,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
-  static const ADD_DOCTOR_DETAIL = _Paths.ADD_DOCTOR_DETAIL;
+  static const ADD_LAWYER_DETAIL = _Paths.ADD_LAWYER_DETAIL;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const PROFILE = _Paths.PROFILE;
   static const APPOINTMENT = _Paths.APPOINTMENT;
@@ -31,7 +31,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const LOGIN = '/login';
   static const REGISTER = '/register';
-  static const ADD_DOCTOR_DETAIL = '/add-doctor-detail';
+  static const ADD_LAWYER_DETAIL = '/add-lawyer-detail';
   static const DASHBOARD = '/dashboard';
   static const PROFILE = '/profile';
   static const APPOINTMENT = '/appointment';

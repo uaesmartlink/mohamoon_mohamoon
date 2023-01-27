@@ -39,7 +39,7 @@ class BalanceController extends GetxController
 
   getBalance() async {
     try {
-      //var doctor = await DoctorService().getDoctor();
+      //var lawyer = await LawyerService().getLawyer();
       balance.value = await BalanceService().getBalance();
     } catch (err) {
       Fluttertoast.showToast(msg: err.toString());

@@ -1,3 +1,3 @@
 const Map<String, String> ur = {
-  'App Name': 'Hallo Doctor',
+  'App Name': 'Hallo Lawyer',
 };

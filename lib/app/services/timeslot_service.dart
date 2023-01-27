@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:mohamoon_mohamoon/app/models/timeslot_model.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 //import 'package:jiffy/jiffy.dart';
 
 class TimeSlotService {
-  ///save doctor timeslot, and return id
-  Future<String> saveDoctorTimeslot(
+  ///save lawyer timeslot, and return id
+  Future<String> saveLawyerTimeslot(
       {required DateTime dateTime,
       required double price,
       required int duration,
@@ -17,17 +17,17 @@ class TimeSlotService {
     timeSlot.price = price;
     timeSlot.duration = duration;
     timeSlot.available = available;
-    timeSlot.doctorid = DoctorService.doctor!.doctorId;
+    timeSlot.lawyerid = LawyerService.lawyer!.lawyerId;
     try {
       if (isParentTimeslot) {
         var timeSlotSaved = await FirebaseFirestore.instance
-            .collection('DoctorTimeslot')
+            .collection('LawyerTimeslot')
             .add(TimeSlot().toMap(timeSlot));
         timeSlotSaved.update({"parentTimeslotId": timeSlotSaved.id});
         return timeSlotSaved.id;
       } else {
         var timeSlotSaved = await FirebaseFirestore.instance
-            .collection('DoctorTimeslot')
+            .collection('LawyerTimeslot')
             .add(TimeSlot().toMap(timeSlot));
 
         return timeSlotSaved.id;
@@ -50,11 +50,11 @@ class TimeSlotService {
     timeSlot.price = price;
     timeSlot.duration = duration;
     timeSlot.available = available;
-    timeSlot.doctorid = DoctorService.doctor!.doctorId;
+    timeSlot.lawyerid = LawyerService.lawyer!.lawyerId;
     timeSlot.parentTimeslotId = parentTimeslotId;
     for (var dateTime in repeatTimeslot) {
       var docRef =
-          FirebaseFirestore.instance.collection("DoctorTimeslot").doc();
+          FirebaseFirestore.instance.collection("LawyerTimeslot").doc();
       timeSlot.timeSlot = dateTime;
       var datanya = TimeSlot().toMap(timeSlot);
       print('datanya : ' + datanya['parentTimeslotId']);
@@ -66,10 +66,10 @@ class TimeSlotService {
 
   Future updateTimeSlot(TimeSlot timeSlot) async {
     try {
-      print('doctor id : ' + DoctorService.doctor!.doctorId!);
+      print('lawyer id : ' + LawyerService.lawyer!.lawyerId!);
       print('timeslot update id : ' + timeSlot.timeSlotId!);
       await FirebaseFirestore.instance
-          .collection('DoctorTimeslot')
+          .collection('LawyerTimeslot')
           .doc(timeSlot.timeSlotId)
           .update(TimeSlot().toMap(timeSlot));
     } catch (e) {
@@ -85,7 +85,7 @@ class TimeSlotService {
       }
       var batch = FirebaseFirestore.instance.batch();
       var docRef = await FirebaseFirestore.instance
-          .collection("DoctorTimeslot")
+          .collection("LawyerTimeslot")
           .where('parentTimeslotId', isEqualTo: timeSlot.parentTimeslotId)
           .where('available', isEqualTo: true)
           .get();
@@ -114,7 +114,7 @@ class TimeSlotService {
   Future deleteTimeSlot(TimeSlot timeSlot) async {
     try {
       await FirebaseFirestore.instance
-          .collection('DoctorTimeslot')
+          .collection('LawyerTimeslot')
           .doc(timeSlot.timeSlotId)
           .delete();
       print('success delete timeslot');
@@ -128,7 +128,7 @@ class TimeSlotService {
     try {
       var batch = FirebaseFirestore.instance.batch();
       var docRef = await FirebaseFirestore.instance
-          .collection("DoctorTimeslot")
+          .collection("LawyerTimeslot")
           .where('parentTimeslotId', isEqualTo: timeSlot.parentTimeslotId)
           .where('available', isEqualTo: true)
           .get();
@@ -142,12 +142,12 @@ class TimeSlotService {
     }
   }
 
-  Future<List<TimeSlot>> getDoctorTimeSlot() async {
+  Future<List<TimeSlot>> getLawyerTimeSlot() async {
     try {
-      var doctor = await DoctorService().getDoctor();
+      var lawyer = await LawyerService().getLawyer();
       var documentRef = await FirebaseFirestore.instance
-          .collection('DoctorTimeslot')
-          .where('doctorId', isEqualTo: doctor!.doctorId)
+          .collection('LawyerTimeslot')
+          .where('lawyerId', isEqualTo: lawyer!.lawyerId)
           .where('timeSlot', isGreaterThanOrEqualTo: DateTime.now())
           .orderBy("timeSlot")
           .get();
@@ -168,10 +168,10 @@ class TimeSlotService {
   //get all timeslot that user, succesfully purchase
   Future<List<TimeSlot>> getOrderedTimeSlot({int? limit}) async {
     try {
-      var doctor = await DoctorService().getDoctor();
+      var lawyer = await LawyerService().getLawyer();
       var documentRef = FirebaseFirestore.instance
-          .collection('DoctorTimeslot')
-          .where('doctorId', isEqualTo: doctor!.doctorId)
+          .collection('LawyerTimeslot')
+          .where('lawyerId', isEqualTo: lawyer!.lawyerId)
           .where('charged', isEqualTo: true);
       var documentSnapshot = limit == null
           ? await documentRef.get()
@@ -197,7 +197,7 @@ class TimeSlotService {
   Future setTimeslotFinish(TimeSlot timeSlot) async {
     try {
       var timeSlotRef = await FirebaseFirestore.instance
-          .collection('DoctorTimeslot')
+          .collection('LawyerTimeslot')
           .doc(timeSlot.timeSlotId)
           .get();
       await timeSlotRef.reference.update({'status': 'complete'});

@@ -6,7 +6,7 @@ import 'package:mohamoon_mohamoon/app/models/repeat_duration_model.dart';
 import 'package:mohamoon_mohamoon/app/models/repeat_model.dart';
 import 'package:mohamoon_mohamoon/app/models/timeslot_model.dart';
 import 'package:mohamoon_mohamoon/app/modules/appointment/controllers/appointment_controller.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/timeslot_service.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -22,7 +22,7 @@ class AddTimeslotController extends GetxController {
   late DateTime to_timeSlot;
   late DateTime newDateTime;
   TimeSlot? editedTimeSlot = Get.arguments[0]['timeSlot'];
-  double? price = DoctorService.doctor!.doctorPrice! / 15;
+  double? price = LawyerService.lawyer!.lawyerPrice! / 15;
   int? duration = 15;
   bool available = true;
   final formKey = GlobalKey<FormBuilderState>();
@@ -319,26 +319,26 @@ class AddTimeslotController extends GetxController {
   }
 
   calculatePrice() {
-    int doctorPrice = DoctorService.doctor!.doctorPrice!;
+    int lawyerPrice = LawyerService.lawyer!.lawyerPrice!;
 
     switch (duration) {
       case 15:
         {
-          price = NumberFormatted().formatNumber(doctorPrice / 4);
+          price = NumberFormatted().formatNumber(lawyerPrice / 4);
           break;
         }
       case 30:
         {
-          price = NumberFormatted().formatNumber(doctorPrice / 2);
+          price = NumberFormatted().formatNumber(lawyerPrice / 2);
           break;
         }
       case 45:
         {
-          return price = NumberFormatted().formatNumber(doctorPrice / 3);
+          return price = NumberFormatted().formatNumber(lawyerPrice / 3);
         }
       case 60:
         {
-          price = doctorPrice / 1;
+          price = lawyerPrice / 1;
           break;
         }
     }
@@ -384,14 +384,14 @@ class AddTimeslotController extends GetxController {
       }
     }
     calculatePrice();
-    String timeSlotId = await TimeSlotService().saveDoctorTimeslot(
+    String timeSlotId = await TimeSlotService().saveLawyerTimeslot(
         dateTime: newDateTime,
         price: price!,
         duration: 15,
         available: available,
         isParentTimeslot: isParent);
-    /*if (price! < DoctorService.doctor!.doctorPrice!) {
-      await DoctorService().updateDoctorBasePrice(price!);
+    /*if (price! < LawyerService.lawyer!.lawyerPrice!) {
+      await LawyerService().updateLawyerBasePrice(price!);
     }*/
     return timeSlotId;
   }
@@ -442,8 +442,8 @@ class AddTimeslotController extends GetxController {
         available: available,
         repeatTimeslot: listRepeatTimeslot,
         parentTimeslotId: parentTimeslotId);
-    /*if (price! < DoctorService.doctor!.doctorPrice!) {
-      await DoctorService().updateDoctorBasePrice(price!);
+    /*if (price! < LawyerService.lawyer!.lawyerPrice!) {
+      await LawyerService().updateLawyerBasePrice(price!);
     }*/
   }
 }

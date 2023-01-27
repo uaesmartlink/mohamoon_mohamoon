@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/modules/edit_profile/views/pages/change_base_price.dart';
 import 'package:mohamoon_mohamoon/app/modules/edit_profile/views/pages/change_password_page.dart';
 import 'package:mohamoon_mohamoon/app/modules/edit_profile/views/pages/update_email_page.dart';
-import 'package:mohamoon_mohamoon/app/services/doctor_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 import 'package:mohamoon_mohamoon/app/utils/exceptions.dart';
 
@@ -18,12 +18,12 @@ class EditProfileController extends GetxController {
   var newPassword = ''.obs;
   var basePrice = 0.obs;
   TextEditingController textEditingBasePriceController =
-      TextEditingController(text: DoctorService.doctor!.doctorPrice.toString());
+      TextEditingController(text: LawyerService.lawyer!.lawyerPrice.toString());
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    basePrice.value = DoctorService.doctor!.doctorPrice!;
+    basePrice.value = LawyerService.lawyer!.lawyerPrice!;
   }
 
   @override
@@ -63,7 +63,7 @@ class EditProfileController extends GetxController {
     try {
       int newBasePrice = int.parse(textEditingBasePriceController.text);
       EasyLoading.show(maskType: EasyLoadingMaskType.black);
-      await DoctorService().updateDoctorBasePrice(newBasePrice);
+      await LawyerService().updateLawyerBasePrice(newBasePrice);
       basePrice.value = newBasePrice;
       update();
       Get.back();

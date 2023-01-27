@@ -95,13 +95,13 @@ class NotificationService {
     }
   }
 
-  Future notificationStartAppointment(String doctorName, String userId,
+  Future notificationStartAppointment(String lawyerName, String userId,
       String roomName, String token, String timeSlotId) async {
     try {
       var callable = FirebaseFunctions.instance
           .httpsCallable('notificationStartAppointment');
       await callable({
-        'doctorName': doctorName,
+        'lawyerName': lawyerName,
         'userId': userId,
         'roomName': roomName,
         'token': token,

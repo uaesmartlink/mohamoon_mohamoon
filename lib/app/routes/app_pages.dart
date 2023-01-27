@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
 
-import 'package:mohamoon_mohamoon/app/modules/add_doctor_detail/bindings/add_doctor_detail_binding.dart';
-import 'package:mohamoon_mohamoon/app/modules/add_doctor_detail/views/add_doctor_detail_view.dart';
+import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/bindings/add_lawyer_detail_binding.dart';
+import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/add_lawyer_detail_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/add_timeslot/bindings/add_timeslot_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/add_timeslot/views/add_timeslot_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/appointment/bindings/appointment_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/appointment/views/appointment_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/balance/bindings/balance_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/balance/views/balance_view.dart';
-//import 'package:mohamoon_mohamoon/app/modules/chat/bindings/chat_binding.dart';
-//import 'package:mohamoon_mohamoon/app/modules/chat/views/chat_view.dart';
+
 import 'package:mohamoon_mohamoon/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/edit_profile/bindings/edit_profile_binding.dart';
@@ -18,8 +17,7 @@ import 'package:mohamoon_mohamoon/app/modules/forgot_password/bindings/forgot_pa
 import 'package:mohamoon_mohamoon/app/modules/forgot_password/views/forgot_password_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/home/bindings/home_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/home/views/home_view.dart';
-import 'package:mohamoon_mohamoon/app/modules/list_chat/bindings/list_chat_binding.dart';
-import 'package:mohamoon_mohamoon/app/modules/list_chat/views/list_chat_view.dart';
+
 import 'package:mohamoon_mohamoon/app/modules/login/bindings/login_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/login/views/login_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/order/bindings/order_binding.dart';
@@ -64,9 +62,9 @@ class AppPages {
       binding: RegisterBinding(),
     ),
     GetPage(
-      name: _Paths.ADD_DOCTOR_DETAIL,
-      page: () => AddDoctorDetailView(),
-      binding: AddDoctorDetailBinding(),
+      name: _Paths.ADD_LAWYER_DETAIL,
+      page: () => AddLawyerDetailView(),
+      binding: AddLawyerDetailBinding(),
     ),
     GetPage(
       name: _Paths.DASHBOARD,

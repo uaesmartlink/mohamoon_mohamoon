@@ -28,14 +28,14 @@ class UserService {
     return profilePic;
   }
 
-  Future<String> getDoctorId() async {
+  Future<String> getLawyerId() async {
     try {
       var docRef = await FirebaseFirestore.instance
           .collection('Users')
           .where('uid', isEqualTo: currentUser!.uid)
           .get();
       if (docRef.docs.isNotEmpty) {
-        return docRef.docs.elementAt(0).get('doctorId') as String;
+        return docRef.docs.elementAt(0).get('lawyerId') as String;
       } else {
         return '';
       }
@@ -95,12 +95,12 @@ class UserService {
     }
   }
 
-  Future setDoctorId(String doctorId) async {
+  Future setLawyerId(String lawyerId) async {
     try {
       FirebaseFirestore.instance
           .collection('Users')
           .doc(UserService.user!.uid)
-          .update({'doctorId': doctorId.toString()});
+          .update({'lawyerId': lawyerId.toString()});
     } catch (e) {
       return Future.error(e.toString());
     }

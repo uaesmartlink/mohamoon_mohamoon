@@ -1,3 +1,3 @@
 const profilePicture = 'profilePicture';
-const checkDoctorDetail = 'checkDoctorDetail';
+const checkLawyerDetail = 'checkLawyerDetail';
 const currencySign = '\$';

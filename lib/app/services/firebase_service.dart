@@ -29,7 +29,7 @@ class FirebaseService {
       'uid': uid,
       'lastLogin': user.metadata.lastSignInTime!.millisecondsSinceEpoch,
       'createdAt': user.metadata.creationTime!.millisecondsSinceEpoch,
-      'role': 'doctor'
+      'role': 'lawyer'
     });
   }
 

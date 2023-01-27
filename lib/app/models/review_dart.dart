@@ -21,7 +21,7 @@ class ReviewModel {
   // ParseUser? get user => get<ParseUser>(_user);
   // set user(ParseUser? value) => set<ParseUser>(_user, value!);
 
-  // static const String _doctor = 'doctor';
-  // Doctor? get doctor => get<Doctor>(_doctor);
-  // set doctor(Doctor? value) => set<Doctor>(_doctor, value!);
+  // static const String _lawyer = 'lawyer';
+  // Lawyer? get lawyer => get<Lawyer>(_lawyer);
+  // set lawyer(Lawyer? value) => set<Lawyer>(_lawyer, value!);
 }

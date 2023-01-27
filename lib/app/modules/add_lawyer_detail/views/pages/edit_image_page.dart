@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mohamoon_mohamoon/app/modules/add_doctor_detail/controllers/add_doctor_detail_controller.dart';
+import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/controllers/add_lawyer_detail_controller.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
-class EditImagePage extends GetView<AddDoctorDetailController> {
+class EditImagePage extends GetView<AddLawyerDetailController> {
   @override
   Widget build(BuildContext context) {
     final ImagePicker _picker = ImagePicker();
@@ -152,7 +152,7 @@ Stack(
                 CircleAvatar(
                   radius: 120,
                   backgroundColor: Colors.grey.shade200,
-                  backgroundImage: AssetImage('assets/images/handsome_doctor.jpg'),
+                  backgroundImage: AssetImage('assets/images/handsome_lawyer.jpg'),
 
                 ),
                 Positioned(

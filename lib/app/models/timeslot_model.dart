@@ -11,7 +11,7 @@ class TimeSlot {
       this.bookedAmount,
       this.bookedDuration,
       this.available,
-      this.doctorid,
+      this.lawyerid,
       this.bookByWho,
       this.purchaseTime,
       this.status,
@@ -23,7 +23,7 @@ class TimeSlot {
   static const String _bookedDuration = 'bookedDuration';
   static const String _bookedAmount = 'bookedAmount';
   static const String _available = 'available';
-  static const String _doctorId = 'doctorId';
+  static const String _lawyerId = 'lawyerId';
   static const String _bookByWho = 'bookByWho';
   static const String _purchaseTime = 'purchaseTime';
   static const String _status = 'status';
@@ -39,7 +39,7 @@ class TimeSlot {
   double? bookedAmount;
   int? bookedDuration;
   bool? available;
-  String? doctorid;
+  String? lawyerid;
   UserModel? bookByWho;
   DateTime? purchaseTime;
   String? status;
@@ -58,7 +58,7 @@ class TimeSlot {
         bookedAmount: json[_bookedAmount] != null ? double.parse(json['bookedAmount'].toString()) : 0.0,
         bookedDuration: json[_bookedDuration] as int?,
         available: json[_available] as bool?,
-        doctorid: json[_doctorId] as String?,
+        lawyerid: json[_lawyerId] as String?,
         bookByWho: json[_bookByWho] != null
             ? UserModel.fromJson(json[_bookByWho] as Map<String, dynamic>)
             : null,
@@ -78,7 +78,7 @@ class TimeSlot {
         _bookedDuration: timeSlot.bookedDuration,
         _bookedAmount: timeSlot.bookedAmount,
         _available: timeSlot.available,
-        _doctorId: timeSlot.doctorid,
+        _lawyerId: timeSlot.lawyerid,
         _parentTimeslotId: timeSlot.parentTimeslotId
       };
     } else {
@@ -89,7 +89,7 @@ class TimeSlot {
         _bookedDuration: timeSlot.bookedDuration,
         _bookedAmount: timeSlot.bookedAmount,
         _available: timeSlot.available,
-        _doctorId: timeSlot.doctorid,
+        _lawyerId: timeSlot.lawyerid,
         _parentTimeslotId: timeSlot.parentTimeslotId
       };
     }

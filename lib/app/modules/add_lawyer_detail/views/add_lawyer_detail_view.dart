@@ -2,15 +2,15 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mohamoon_mohamoon/app/modules/add_doctor_detail/views/pages/chose_doctor_category_page.dart';
-import 'package:mohamoon_mohamoon/app/modules/add_doctor_detail/views/widgets/display_image.dart';
+import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/pages/chose_lawyer_category_page.dart';
+import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/widgets/display_image.dart';
 import 'package:mohamoon_mohamoon/app/modules/login/views/widgets/submit_button.dart';
-import '../controllers/add_doctor_detail_controller.dart';
+import '../controllers/add_lawyer_detail_controller.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
+class AddLawyerDetailView extends GetView<AddLawyerDetailController> {
   static const List<String> langage = ['English', 'Arabic', 'English & Arabic'];
 
   var dropDownLangage = langage.map((e) {
@@ -24,14 +24,14 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
     var username = UserService().currentUser!.displayName;
-    controller.doctorName.value = username!;
+    controller.lawyerName.value = username!;
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(30, 51, 30, 20),
         child: Form(
           autovalidateMode: AutovalidateMode.disabled,
           key: controller.formkey,
-          child: GetX<AddDoctorDetailController>(
+          child: GetX<AddLawyerDetailController>(
             builder: (controller) => Column(
               children: [
                 DisplayImage(
@@ -52,14 +52,14 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                       return null;
                     }
                   }),
-                  initialValue: controller.doctor == null
+                  initialValue: controller.lawyer == null
                       ? ''
-                      : controller.doctorPhone.value,
+                      : controller.lawyerPhone.value,
                   onSaved: (phone) {
-                    controller.doctorPhone.value = phone!;
+                    controller.lawyerPhone.value = phone!;
                   },
                   decoration: InputDecoration(
-                      hintText: controller.doctor == null ? 'phone'.tr : '',
+                      hintText: controller.lawyer == null ? 'phone'.tr : '',
                       border: OutlineInputBorder(
                           borderSide: BorderSide(width: 2),
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
@@ -71,19 +71,19 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                       borderSide: BorderSide(),
                     ),
                   ),
-                  initialValue: controller.doctor == null
+                  initialValue: controller.lawyer == null
                       ? ''
-                      : controller.doctorPhone.value,
+                      : controller.lawyerPhone.value,
                   initialCountryCode: "AE",
                   onSaved: (phone) {
-                    controller.doctorPhone.value =
+                    controller.lawyerPhone.value =
                         phone == null ? '' : phone.number;
                   },
                 ),
                 SizedBox(height: 20),
                 FormBuilderDropdown(
-                  initialValue: controller.doctorHospital,
-                  name: 'doctorHospital',
+                  initialValue: controller.lawyerHospital,
+                  name: 'lawyerHospital',
                   items: dropDownLangage,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -95,7 +95,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                       fillColor: Colors.grey[200],
                       filled: true),
                   onChanged: (langage) {
-                    controller.doctorHospital = langage.toString();
+                    controller.lawyerHospital = langage.toString();
                   },
                 ),
                 SizedBox(height: 20),
@@ -108,11 +108,11 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                   onSaved: (shortBiography) {
                     controller.shortBiography.value = shortBiography!;
                   },
-                  initialValue: controller.doctor == null
+                  initialValue: controller.lawyer == null
                       ? null
                       : controller.shortBiography.value,
                   decoration: InputDecoration(
-                      hintText: controller.doctor == null
+                      hintText: controller.lawyer == null
                           ? 'Short Biography'.tr
                           : null,
                       border: OutlineInputBorder(
@@ -168,15 +168,15 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                     backgroundColor: Color(0xFFF5F6F9),
                   ),
                   onPressed: () {
-                    Get.to(() => ChoseDoctorCategoryPage());
+                    Get.to(() => ChoseLawyerCategoryPage());
                   },
                   child: Row(
                     children: [
                       SizedBox(width: 20),
                       Expanded(
-                        child: Text(controller.doctorCategory == null
-                            ? 'Chose Doctor Category'.tr
-                            : controller.doctorCategory!.categoryName!),
+                        child: Text(controller.lawyerCategory == null
+                            ? 'Chose Lawyer Category'.tr
+                            : controller.lawyerCategory!.categoryName!),
                       ),
                       Icon(Icons.arrow_forward_ios),
                     ],
@@ -187,7 +187,7 @@ class AddDoctorDetailView extends GetView<AddDoctorDetailController> {
                 ),
                 submitButton(
                     onTap: () {
-                      controller.saveDoctorDetail();
+                      controller.saveLawyerDetail();
                     },
                     text: 'Save'.tr)
               ],

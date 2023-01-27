@@ -31,7 +31,7 @@ class DashboardController extends GetxController {
   void initTabAppointment() {
     // interval(count1, (_) => Network
     // print("interval $_"), time: Duration(seconds: 1));
-    Get.find<AppointmentController>().initDoctorSchedule();
+    Get.find<AppointmentController>().initLawyerSchedule();
     //print('init appointment');
   }
 

@@ -31,11 +31,11 @@ class AppointmentController extends GetxController
   @override
   void onClose() {}
 
-  initDoctorSchedule() {
+  initLawyerSchedule() {
     selectedDay = DateTime.now().obs;
     focusDay = DateTime.now().obs;
     calendarFormat = CalendarFormat.month;
-    TimeSlotService().getDoctorTimeSlot().then(
+    TimeSlotService().getLawyerTimeSlot().then(
       (value) {
         groupedEvents = groupEvent(value);
 
@@ -84,7 +84,7 @@ class AppointmentController extends GetxController
   }
 
   void updateEventsCalendar() {
-    TimeSlotService().getDoctorTimeSlot().then((value) {
+    TimeSlotService().getLawyerTimeSlot().then((value) {
       groupedEvents = groupEvent(value);
       updateEventList(selectedDay.value);
       change(groupedEvents, status: RxStatus.success());

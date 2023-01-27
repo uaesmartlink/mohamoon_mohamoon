@@ -24,7 +24,7 @@ class RegisterController extends GetxController {
       EasyLoading.show(
           status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
       AuthService().regiterNewUser(username, email, password).then((value) {
-        Get.offAllNamed('/add-doctor-detail');
+        Get.offAllNamed('/add-lawyer-detail');
       }).onError((error, stackTrace) {
         Fluttertoast.showToast(
             msg: error.toString(), toastLength: Toast.LENGTH_LONG);

@@ -91,10 +91,10 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ProfileButton(
                 onTap: () {
-                  controller.toEditDoctorDetail();
+                  controller.toEditLawyerDetail();
                 },
                 icon: Icons.edit,
-                text: 'Edit Doctor Data'.tr,
+                text: 'Edit Lawyer Data'.tr,
               ),
               ProfileButton(
                 onTap: () {
