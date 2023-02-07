@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1067952255007-ut4ukktl4gfaul8rtc6i4cvdi0i7auoj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1067952255007-ut4ukktl4gfaul8rtc6i4cvdi0i7auoj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDyKnxuFSNi7Yyx5EOlCUIuXsOQLeifvMg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1067952255007</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ae.smartlink.mohamoon.mohamoonMohamoon</string>
+	<key>PROJECT_ID</key>
+	<string>mohamoon-f35de</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mohamoon-f35de.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1067952255007:ios:be221140c64edec25ea52a</string>
+</dict>
+</plist>

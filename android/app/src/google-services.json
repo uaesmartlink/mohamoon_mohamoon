@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "1067952255007",
+    "project_id": "mohamoon-f35de",
+    "storage_bucket": "mohamoon-f35de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067952255007:android:33746bde9062fad05ea52a",
+        "android_client_info": {
+          "package_name": "ae.smartlink.client_mohamoon.client_mohamoon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067952255007-0ahi67j479non3c5u81gf9f2f2m2a8om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3dZHbHgy_nr20C1vIFC3C1sjNf6yLk8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067952255007-0ahi67j479non3c5u81gf9f2f2m2a8om.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1067952255007-bav4fotmacu87o5ico43lc8tsnmt0mbm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ae.smartlink.clientmohamoon.clientMohamoon"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067952255007:android:bbe13c0417924c105ea52a",
+        "android_client_info": {
+          "package_name": "ae.smartlink.mohamoon.mohamoon_mohamoon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067952255007-0ahi67j479non3c5u81gf9f2f2m2a8om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3dZHbHgy_nr20C1vIFC3C1sjNf6yLk8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067952255007-0ahi67j479non3c5u81gf9f2f2m2a8om.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1067952255007-bav4fotmacu87o5ico43lc8tsnmt0mbm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ae.smartlink.clientmohamoon.clientMohamoon"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

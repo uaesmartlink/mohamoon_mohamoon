@@ -1,7 +1,5 @@
 import 'dart:core';
 
-import 'package:mohamoon_mohamoon/app/models/lawyer_category.dart';
-
 class Lawyer {
   Lawyer({
     required this.lawyerId,
@@ -15,6 +13,7 @@ class Lawyer {
     required this.lawyerHospital,
     required this.lawyerBalance,
     required this.accountStatus,
+    required this.isOnline,
   });
   static const String _lawyerId = 'lawyerId';
   static const String _lawyerName = 'lawyerName';
@@ -27,6 +26,7 @@ class Lawyer {
   static const String _lawyerHospital = 'lawyerHospital';
   static const String _lawyerBalance = 'balance';
   static const String _accountStatus = 'accountStatus';
+  static const String _isOnline = 'isOnline';
   String? lawyerId;
   String? lawyerName;
   String? lawyerPhone;
@@ -38,6 +38,7 @@ class Lawyer {
   String? lawyerHospital;
   double? lawyerBalance;
   String? accountStatus;
+  bool? isOnline;
 
   factory Lawyer.fromJson(Map<String, dynamic> data) {
     return Lawyer(
@@ -51,6 +52,8 @@ class Lawyer {
         categories: data[_lawyerCategory],
         lawyerHospital: data[_lawyerHospital],
         lawyerBalance: double.parse(((data[_lawyerBalance])??0.0).toString()),
-        accountStatus: data[_accountStatus]);
+        accountStatus: data[_accountStatus],
+        isOnline: data[_isOnline],
+    );
   }
 }

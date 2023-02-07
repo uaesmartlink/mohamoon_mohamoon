@@ -7,7 +7,6 @@ import 'package:mohamoon_mohamoon/app/modules/widgets/empty_list_widget.dart';
 import 'package:mohamoon_mohamoon/app/modules/widgets/section_title.dart';
 import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 import 'package:mohamoon_mohamoon/app/utils/constants.dart';
-
 import '../controllers/balance_controller.dart';
 
 enum TransactionType { withdraw, payment }
@@ -70,7 +69,7 @@ class BalanceView extends GetView<BalanceController> {
                         child: Text("Withdraw".tr),
                         onPressed: () => controller.withdraw(),
                         style: ElevatedButton.styleFrom(
-                          primary: Styles.thirdlyColor,
+                          primary: Colors.blue,
                           onPrimary: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0),

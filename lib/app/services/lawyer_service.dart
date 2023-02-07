@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mohamoon_mohamoon/app/models/lawyer_category.dart';
 import 'package:mohamoon_mohamoon/app/models/lawyer_model.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 
 class LawyerService {
   static Lawyer? lawyer;
+
   set currentLawyer(Lawyer? lawyer) => LawyerService.lawyer = lawyer;
 
   Future saveLawyerDetail(
@@ -23,17 +23,19 @@ class LawyerService {
           "name": categories[i],
         });
       }
-      CollectionReference lawyers = FirebaseFirestore.instance.collection('Lawyers');
+      CollectionReference lawyers =
+          FirebaseFirestore.instance.collection('Lawyers');
       Map<String, dynamic> lawyersData = {
         'lawyerName': lawyerName,
         'lawyerPhone': lawyerPhone,
         'lawyerHospital': hospital,
         'lawyerBiography': shortBiography,
         'lawyerPicture': pictureUrl,
-        'certificateUrl':certificateUrl,
+        'certificateUrl': certificateUrl,
         'categories': FieldValue.arrayUnion(categories),
         'lawyerBasePrice': 10,
-        'accountStatus': 'nonactive'
+        'accountStatus': 'nonactive',
+        'isOnline': false,
       };
 
       if (isUpdate) {
@@ -41,7 +43,6 @@ class LawyerService {
         await lawyers.doc(LawyerService.lawyer!.lawyerId).update(lawyersData);
         await getLawyer(forceGet: true);
       } else {
-
         lawyersData['createdAt'] = FieldValue.serverTimestamp();
         lawyersData['updatedAt'] = FieldValue.serverTimestamp();
         var lawyer = await lawyers.add(lawyersData);
@@ -56,8 +57,6 @@ class LawyerService {
   ///[forceGet] if true will force get from server even if current lawyer is not null
   Future<Lawyer?> getLawyer({bool forceGet = false}) async {
     try {
-      print("SSSSSS");
-
       if (LawyerService.lawyer != null && forceGet == false) {
         return LawyerService.lawyer;
       }
@@ -86,6 +85,19 @@ class LawyerService {
           .doc(lawyer!.lawyerId)
           .update({'lawyerBasePrice': basePrice});
       lawyer!.lawyerPrice = basePrice;
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future updateLawyerStatus(bool isOnline) async {
+    try {
+      print(isOnline);
+      await FirebaseFirestore.instance
+          .collection('Lawyers')
+          .doc(lawyer!.lawyerId)
+          .update({'isOnline': isOnline});
+      lawyer!.isOnline = isOnline;
     } catch (e) {
       return Future.error(e.toString());
     }
