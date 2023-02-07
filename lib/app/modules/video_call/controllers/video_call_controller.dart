@@ -1,9 +1,7 @@
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:flutter/foundation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/models/timeslot_model.dart';
-import 'package:mohamoon_mohamoon/app/services/timeslot_service.dart';
 import 'package:mohamoon_mohamoon/app/services/videocall_service.dart';
 import 'package:mohamoon_mohamoon/app/utils/environment.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -24,7 +22,6 @@ class VideoCallController extends GetxController {
     super.onInit();
     initAgora();
   }
-
 
   Future<void> initAgora() async {
     // retrieve permissions
@@ -50,7 +47,6 @@ class VideoCallController extends GetxController {
           endMeeting();
           update();
         },
-
       ),
     );
 

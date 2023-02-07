@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/models/timeslot_model.dart';
+
 //import 'package:mohamoon_mohamoon/app/models/withdraw_settings_detail.dart';
 import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
 import 'package:mohamoon_mohamoon/app/services/notification_service.dart';
@@ -17,6 +18,7 @@ class OrderDetailController extends GetxController {
   NotificationService notificationService = Get.find<NotificationService>();
   var active = true.obs;
   bool isReschedule = false;
+
   @override
   void onInit() async {
     super.onInit();
@@ -26,11 +28,11 @@ class OrderDetailController extends GetxController {
     print(orderedTimeslot.price);
     print(orderedTimeslot.bookedAmount);
     print('---------------');
-
   }
 
   @override
   void onClose() {}
+
   void videoCall() async {
     //
     print("AAAA");
@@ -39,14 +41,15 @@ class OrderDetailController extends GetxController {
     try {
       EasyLoading.show(maskType: EasyLoadingMaskType.black);
 
-      var token = await VideoCallService().getAgoraToken(orderedTimeslot.timeSlotId!);
-
+      var token =
+          await VideoCallService().getAgoraToken(orderedTimeslot.timeSlotId!);
       final roomData = <String, dynamic>{
         'room': orderedTimeslot.timeSlotId,
         'token': token,
         'timestamp': Timestamp.fromDate(DateTime.now())
       };
-      await VideoCallService().createRoom(orderedTimeslot.timeSlotId!, roomData);
+      await VideoCallService()
+          .createRoom(orderedTimeslot.timeSlotId!, roomData);
 
       notificationService.notificationStartAppointment(
           LawyerService.lawyer!.lawyerName!,
