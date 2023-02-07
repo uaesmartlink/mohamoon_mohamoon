@@ -155,19 +155,19 @@ class AddLawyerDetailView extends GetView<AddLawyerDetailController> {
                       backgroundColor: Color(0xFFF5F6F9),
                     ),
                     onPressed: () async {
-                      // FilePickerResult? result =
-                      //     await FilePicker.platform.pickFiles(
-                      //   type: FileType.custom,
-                      //   allowedExtensions: ['pdf'],
-                      // );
-                      // if (result != null) {
-                      //   File? file = File(result.files.single.path!);
-                      //   controller.uploadCertificate(file);
-                      //   controller.certificateUrl.value =
-                      //       result.files.single.name;
-                      // } else {
-                      //   return;
-                      // }
+                      FilePickerResult? result =
+                          await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['pdf'],
+                      );
+                      if (result != null) {
+                        File? file = File(result.files.single.path!);
+                        controller.uploadCertificate(file);
+                        controller.certificateUrl.value =
+                            result.files.single.name;
+                      } else {
+                        return;
+                      }
                     },
                     child: Row(
                       children: [

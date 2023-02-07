@@ -22,7 +22,7 @@ class Lawyer {
   static const String _certificateUrl = 'certificateUrl';
   static const String _lawyerPrice = 'lawyerBasePrice';
   static const String _lawyerShortBiography = 'lawyerBiography';
-  static const String _lawyerCategory = 'lawyerCategory';
+  static const String _categories = 'categories';
   static const String _lawyerHospital = 'lawyerHospital';
   static const String _lawyerBalance = 'balance';
   static const String _accountStatus = 'accountStatus';
@@ -41,6 +41,8 @@ class Lawyer {
   bool? isOnline;
 
   factory Lawyer.fromJson(Map<String, dynamic> data) {
+    List<String> list = (data['categories'] as List).map((item) => item as String).toList();
+
     return Lawyer(
         lawyerId: data[_lawyerId],
         lawyerName: data[_lawyerName],
@@ -49,7 +51,7 @@ class Lawyer {
         certificateUrl: data[_certificateUrl],
         lawyerPrice: data[_lawyerPrice],
         lawyerShortBiography: data[_lawyerShortBiography],
-        categories: data[_lawyerCategory],
+        categories: list,
         lawyerHospital: data[_lawyerHospital],
         lawyerBalance: double.parse(((data[_lawyerBalance])??0.0).toString()),
         accountStatus: data[_accountStatus],

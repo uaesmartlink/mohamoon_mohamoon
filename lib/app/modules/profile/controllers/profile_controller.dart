@@ -43,8 +43,7 @@ class ProfileController extends GetxController {
 
   void toEditLawyerDetail() async {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    var lawyer = LawyerService.lawyer;
-    print(lawyer?.categories);
+    Lawyer? lawyer = await LawyerService().getLawyer(forceGet: true);
     EasyLoading.dismiss();
     Get.toNamed('/add-lawyer-detail', arguments: lawyer);
   }

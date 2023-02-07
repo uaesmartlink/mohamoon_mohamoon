@@ -32,8 +32,9 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
       }
     }
     username.value = UserService().currentUser!.displayName!;
-    UserService().getPhotoUrl().then((urlPicture) => profilePic.value = urlPicture);
-
+    profilePic.value = await UserService().getPhotoUrl();
+    print("Hello");
+    print(profilePic);
     await getListAppointment();
     //await getListReview(lawyer);
     getBalance();
@@ -41,6 +42,7 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
 
   @override
   void onClose() {}
+
   void increment() => count.value++;
 
   //Check whether, user is already set his detail lawyer
@@ -49,6 +51,7 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
     if (check == null || !check) return false;
     return true;
   }
+
   void toProfile() {
     Get.find<DashboardController>().selectedIndex = 3;
   }
@@ -78,6 +81,6 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
   }
 
   Future<void> toggle(bool isOnline) async {
-      await LawyerService().updateLawyerStatus(isOnline);
+    await LawyerService().updateLawyerStatus(isOnline);
   }
 }

@@ -39,7 +39,7 @@ class AddLawyerDetailController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    print(categories);
+
     if (lawyer != null) {
       isEdit = true;
       profilePicUrl.value = lawyer!.lawyerPicture!;
@@ -49,9 +49,9 @@ class AddLawyerDetailController extends GetxController
       shortBiography.value = lawyer!.lawyerShortBiography!;
       categories = lawyer!.categories!;
       lawyerCertificateUrl.value = lawyer!.certificateUrl!;
-      print(lawyerCertificateUrl.value);
       update();
     }
+
   }
 
   @override
@@ -95,6 +95,8 @@ class AddLawyerDetailController extends GetxController
     image = await _picker.pickImage(source: ImageSource.gallery);
     if (image == null) return;
     imageFile = File(image!.path);
+    print(imageFile);
+    print("Hello");
     var imageCropped = await ImageCropper().cropImage(
         sourcePath: image!.path,
         aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
@@ -112,15 +114,15 @@ class AddLawyerDetailController extends GetxController
 
   void saveLawyerDetail() async {
     if (lawyer == null) {
-    /*  if (profilePicUrl.value.isEmpty) {
+      if (profilePicUrl.value.isEmpty) {
         exceptionToast('Please choose your profile photo'.tr);
         return;
-      }*/
+      }
 
-     /* if (certificateUrl.value.isEmpty) {
+      if (certificateUrl.value.isEmpty) {
         exceptionToast('Please choose your certificate'.tr);
         return;
-      }*/
+      }
       if (categories == null) {
         exceptionToast('Please chose lawyer Specialty or Category'.tr);
         return;

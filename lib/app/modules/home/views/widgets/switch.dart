@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../controllers/home_controller.dart';
+import 'package:mohamoon_mohamoon/app/styles/styles.dart';
 
 class SwitchExample extends StatefulWidget {
   final HomeController controller;
@@ -18,32 +19,40 @@ class _SwitchExampleState extends State<SwitchExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 40),
+    return Container(
+      padding: EdgeInsets.only(top: 15),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           light
               ? Text(
                   "Online",
                   style: TextStyle(
-                    color: Colors.lightGreen,
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
                 )
               : Text(
                   "Offline",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+
                   ),
                 ),
           Switch(
             // This bool value toggles the switch.
             value: light,
-            activeColor: Colors.red,
+            activeColor: Color(0xFFFFE400),
+
+            activeTrackColor: Styles.primaryColor,
             onChanged: (bool value) {
               // This is called when the user toggles the switch.
               setState(() {
                 light = value;
-                this.controller.toggle(value);
+                controller.toggle(value);
               });
             },
           )

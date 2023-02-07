@@ -70,7 +70,6 @@ class LawyerService {
       data['lawyerId'] = lawyerId;
       Lawyer lawyer = Lawyer.fromJson(data);
       LawyerService.lawyer = lawyer;
-
       LawyerService().currentLawyer = lawyer;
       return lawyer;
     } catch (e) {

@@ -28,7 +28,8 @@ class DisplayImage extends StatelessWidget {
 
   // Builds Profile Image
   Widget buildImage(Color color) {
-    final image = imagePath.isNotEmpty
+    print("Hello");
+    final image =  imagePath.isNotEmpty
         ? NetworkImage(imagePath)
         : AssetImage('assets/images/default-profile.png');
     return CircleAvatar(
