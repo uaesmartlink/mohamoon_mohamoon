@@ -62,10 +62,12 @@ class VideoCallController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() async {
+    await endMeeting();
+  }
 
   void hangUp() async {
-    Get.back();
+    await endMeeting();
   }
 
   Future endMeeting() async {
@@ -83,7 +85,7 @@ class VideoCallController extends GetxController {
     }
   }
 
-  Future toggleLotcalAudioMuted() async {
+  Future toggleLocalAudioMuted() async {
     try {
       localAudioMute = !localAudioMute;
       await engine.muteLocalAudioStream(localAudioMute);

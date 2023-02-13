@@ -36,7 +36,7 @@ class VideoCallView extends GetView<VideoCallController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         FloatingActionButton(
-                          onPressed: controller.toggleLotcalAudioMuted,
+                          onPressed: controller.toggleLocalAudioMuted,
                           child: controller.localAudioMute == true
                               ? Icon(Icons.mic_off)
                               : Icon(Icons.mic),
