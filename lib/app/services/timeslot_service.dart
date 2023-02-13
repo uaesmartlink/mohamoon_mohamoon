@@ -157,6 +157,7 @@ class TimeSlotService {
         var data = doc.data();
         data['timeSlotId'] = doc.reference.id;
         TimeSlot timeSlot = TimeSlot.fromJson(data);
+        print(timeSlot.timeSlot.toString());
         return timeSlot;
       }).toList();
       return listTimeslot;
