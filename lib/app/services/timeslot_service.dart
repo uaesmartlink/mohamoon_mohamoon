@@ -37,6 +37,23 @@ class TimeSlotService {
     }
   }
 
+  Future<TimeSlot> getTimeSlotById(String timeslotId) async {
+    try {
+      var timeslotRef = await FirebaseFirestore.instance
+          .collection('LawyerTimeslot')
+          .doc(timeslotId)
+          .get();
+
+      TimeSlot timeslot = TimeSlot.fromFirestore(timeslotRef);
+      print("MMM");
+      timeslot.timeSlotId = timeslotId;
+      print("MMM");
+      return timeslot;
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
   Future saveMultipleTimeslot(
       {required DateTime dateTime,
       required double price,
