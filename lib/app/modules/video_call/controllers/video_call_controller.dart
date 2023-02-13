@@ -1,4 +1,5 @@
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mohamoon_mohamoon/app/models/timeslot_model.dart';
@@ -7,7 +8,7 @@ import 'package:mohamoon_mohamoon/app/utils/environment.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class VideoCallController extends GetxController {
-  TimeSlot orderedTimeslot = Get.arguments[0]['timeSlot'];
+  // TimeSlot orderedTimeslot = Get.arguments[0]['timeSlot'];
   String token = Get.arguments[0]['token'];
   String room = Get.arguments[0]['room'];
   int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
@@ -34,6 +35,7 @@ class VideoCallController extends GetxController {
         joinChannelSuccess: (String channel, int uid, int elapsed) {
           print("local user $uid joined");
           localUserJoined = true;
+          videoCallEstablished = true;
           update();
         },
         userJoined: (int uid, int elapsed) {
@@ -67,7 +69,7 @@ class VideoCallController extends GetxController {
   }
 
   Future endMeeting() async {
-    await VideoCallService().removeRoom(orderedTimeslot.timeSlotId!);
+    await VideoCallService().removeRoom(room);
     await engine.leaveChannel();
     await engine.destroy();
     Get.back();

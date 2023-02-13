@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mohamoon_mohamoon/app/services/videocall_service.dart';
 import 'package:flutter/widgets.dart';
-import 'package:custom_flutter_callkit_incoming/flutter_callkit_incoming.dart';
+import 'package:flutter_callkit_incoming/flutter_callkit_incoming.dart';
 import 'package:uuid/uuid.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -127,8 +127,7 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
     description: 'this channel is used for important notification',
     importance: Importance.max,
     playSound: true);
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =  FlutterLocalNotificationsPlugin();
 
 Future<void> _firebaseMessaggingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -156,7 +155,7 @@ Future<void> _firebaseMessaggingBackgroundHandler(RemoteMessage message) async {
     'extra': <String, dynamic>{
       'roomName': message.data['roomName'],
       'token': message.data['token'],
-      'selectedTimeslotId': message.data['timeSlotId'],
+      'selectedTimeslotId': message.data['roomName'],
     },
     'headers': <String, dynamic>{},
     'android': <String, dynamic>{
@@ -181,8 +180,8 @@ Future<void> _firebaseMessaggingBackgroundHandler(RemoteMessage message) async {
       'audioSessionPreferredIOBufferDuration': 0.005,
       'supportsDTMF': true,
       'supportsHolding': true,
-      'supportsGrouping': false,
-      'supportsUngrouping': false,
+      'supportsGrouping': true,
+      'supportsUngrouping': true,
       'ringtonePath': 'system_ringtone_default'
     }
   };
@@ -289,15 +288,19 @@ class NotificationService {
         case CallEvent.ACTION_CALL_ACCEPT:
           print('body ' + event.body['extra']['roomName']);
           print('accept the data');
-          TimeSlot selectedTimeslot = await TimeSlotService()
-              .getTimeSlotById(event.body['extra']['roomName']);
+          // TimeSlot selectedTimeslot = await TimeSlotService()
+          //     .getTimeSlotById(event.body['extra']['roomName']);
           print("SSSSSSSSSs");
           print(event.body['extra']['roomName']);
-          print(selectedTimeslot.timeSlotId);
-          print("SSSSSSSSSs");
+          // print(selectedTimeslot.timeSlotId);
+          // print("SSSSSSSSSs");
+          // print(event.body['extra']['roomName']);
+          // print(selectedTimeslot.timeSlotId);
+          print("ZZZZZ");
+
           Get.toNamed('/video-call', arguments: [
             {
-              'timeSlot': selectedTimeslot,
+              // 'timeSlot': event.body['extra']['roomName'],
               'room': event.body['extra']['roomName'],
               'token': event.body['extra']['token']
             }
@@ -334,7 +337,7 @@ class NotificationService {
       'extra': <String, dynamic>{
         'roomName': roomName,
         'token': token,
-        'selectedTimeslotId': selectectedTimeslotId,
+        'selectedTimeslotId': roomName,
       },
       'headers': <String, dynamic>{},
       'android': <String, dynamic>{
@@ -358,8 +361,8 @@ class NotificationService {
         'audioSessionPreferredIOBufferDuration': 0.005,
         'supportsDTMF': true,
         'supportsHolding': true,
-        'supportsGrouping': false,
-        'supportsUngrouping': false,
+        'supportsGrouping': true,
+        'supportsUngrouping': true,
         'ringtonePath': 'system_ringtone_default'
       }
     };
