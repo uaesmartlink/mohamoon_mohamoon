@@ -101,4 +101,14 @@ class LawyerService {
       return Future.error(e.toString());
     }
   }
+
+  Future<bool?> getIsOnline() async{
+    try{
+        return lawyer!.isOnline;
+    }catch(e){
+      return Future.error(e.toString());
+    }
+
+    return false;
+  }
 }

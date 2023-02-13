@@ -16,6 +16,7 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
   final count = 0.obs;
   final username = ''.obs;
   final profilePic = ''.obs;
+  bool light = false;
   DashboardModel dashboardModel = DashboardModel();
   var lock = Lock();
 
@@ -23,7 +24,7 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
   void onReady() async {
     super.onReady();
     var lawyer = await LawyerService().getLawyer();
-
+    light = (await LawyerService().getIsOnline())!;
     if (lawyer == null) {
       if (await UserService().checkIfUserExist() == false) {
         return Get.offNamed('/login');
