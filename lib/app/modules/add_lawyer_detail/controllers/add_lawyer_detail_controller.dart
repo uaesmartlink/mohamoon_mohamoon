@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/countries.dart';
+import 'package:mohamoon_mohamoon/app/models/lawyer_category.dart';
 
 //import 'package:get_storage/get_storage.dart';
 import 'package:mohamoon_mohamoon/app/models/lawyer_model.dart';
@@ -20,7 +21,7 @@ import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 import 'package:mohamoon_mohamoon/app/utils/exceptions.dart';
 
 class AddLawyerDetailController extends GetxController
-    with StateMixin<List<dynamic>> {
+    with StateMixin<List<LawyerCategory>> {
   //TODO: Implement AddLawyerDetailController
   final List<bool> selected = List.generate(100, (i) => false);
   List<String> countries = [];
@@ -44,7 +45,7 @@ class AddLawyerDetailController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    initLawyerCountry();
+    // initLawyerCountry();
 
     if (lawyer != null) {
       isEdit = true;
@@ -117,15 +118,15 @@ class AddLawyerDetailController extends GetxController
     });
   }
 
-  void initLawyerCountry() async {
-    countries = await LawyerCountryService().getListLawyerCountry();
-    // dropDownCountries = countries.map((e) {
-    //   return DropdownMenuItem(
-    //     value: e,
-    //     child: Text(e),
-    //   );
-    // }).toList();
-  }
+  // void initLawyerCountry() async {
+  //   countries = await LawyerCountryService().getListLawyerCountry();
+  //   // dropDownCountries = countries.map((e) {
+  //   //   return DropdownMenuItem(
+  //   //     value: e,
+  //   //     child: Text(e),
+  //   //   );
+  //   // }).toList();
+  // }
 
   void saveLawyerDetail() async {
     if (lawyer == null) {

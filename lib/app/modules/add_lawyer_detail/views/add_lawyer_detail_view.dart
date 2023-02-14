@@ -46,7 +46,6 @@ class AddLawyerDetailView extends GetView<AddLawyerDetailController> {
 
   @override
   Widget build(BuildContext context) {
-    LawyerCountryService().getListLawyerCountry();
     final node = FocusScope.of(context);
     var username = UserService().currentUser!.displayName;
     controller.lawyerName.value = username!;
