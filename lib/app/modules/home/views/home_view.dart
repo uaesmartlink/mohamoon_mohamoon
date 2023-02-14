@@ -109,7 +109,7 @@ class HomeView extends GetView<HomeController> {
                     subTitle: 'See More'.tr,
                   ),
                   Container(
-                      height: 200,
+                      height: 250,
                       child: dashboardModel.listAppointment!.isNotEmpty
                           ? ListView.builder(
                               itemCount: dashboardModel.listAppointment!.length,

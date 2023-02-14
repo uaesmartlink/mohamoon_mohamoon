@@ -8,5 +8,6 @@ class AddLawyerDetailBinding extends Bindings {
     Get.lazyPut<AddLawyerDetailController>(
       () => AddLawyerDetailController(),
     );
+
   }
 }

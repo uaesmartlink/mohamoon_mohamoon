@@ -13,9 +13,10 @@ import 'app/services/firebase_service.dart';
 import 'app/utils/localization.dart';
 import 'package:devicelocale/devicelocale.dart';
 import 'package:country_codes/country_codes.dart';
-
+import 'package:get/get.dart';
+import 'package:mohamoon_mohamoon/app/modules/lawyer_country/controllers/lawyer_country_controller.dart';
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
   await CountryCodes.init(); // Optionally, you may provide a `Locale` to get countrie's localizadName
   CountryDetails details = CountryCodes.detailsForLocale();
   Locale locale = CountryCodes.getDeviceLocale()!;
@@ -33,7 +34,8 @@ Future main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  runApp(
+   WidgetsFlutterBinding.ensureInitialized();
+   runApp(
     GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Application",

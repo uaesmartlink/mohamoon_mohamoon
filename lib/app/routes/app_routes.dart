@@ -25,6 +25,7 @@ abstract class Routes {
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   static const CHAT = _Paths.CHAT;
   static const LIST_CHAT = _Paths.LIST_CHAT;
+  static const LAWYER_COUNTRIES = _Paths.LAWYER_COUNTRIES;
 }
 
 abstract class _Paths {
@@ -32,6 +33,7 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const ADD_LAWYER_DETAIL = '/add-lawyer-detail';
+  static const LAWYER_COUNTRIES = '/lawyer-countries';
   static const DASHBOARD = '/dashboard';
   static const PROFILE = '/profile';
   static const APPOINTMENT = '/appointment';

@@ -26,7 +26,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
           },
           icon: Icon(Icons.arrow_back_ios_rounded),
         ),
-      /*  actions: [
+        /*  actions: [
           //list if widget in appbar actions
           PopupMenuButton(
             color: Colors.white,
@@ -91,9 +91,10 @@ class OrderDetailView extends GetView<OrderDetailController> {
                 height: 10,
               ),
               UserOrderTile(
-                  imgUrl: controller.orderedTimeslot.bookByWho!.photoUrl!,
-                  name: controller.orderedTimeslot.bookByWho!.displayName!,
-                  orderTime: controller.orderedTimeslot.purchaseTime!),
+                imgUrl: controller.orderedTimeslot.bookByWho!.photoUrl!,
+                name: controller.orderedTimeslot.bookByWho!.displayName!,
+                orderTime: controller.orderedTimeslot.purchaseTime!,
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -163,7 +164,8 @@ class OrderDetailView extends GetView<OrderDetailController> {
                             height: 50,
                             child: Text(
                               currencySign +
-                                  controller.orderedTimeslot.bookedAmount.toString() +
+                                  controller.orderedTimeslot.bookedAmount
+                                      .toString() +
                                   ' (Paid)'.tr,
                             ),
                           ),

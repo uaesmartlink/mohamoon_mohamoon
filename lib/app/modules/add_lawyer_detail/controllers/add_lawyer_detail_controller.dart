@@ -5,40 +5,46 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl_phone_field/countries.dart';
+
 //import 'package:get_storage/get_storage.dart';
-import 'package:mohamoon_mohamoon/app/models/lawyer_category.dart';
 import 'package:mohamoon_mohamoon/app/models/lawyer_model.dart';
-import 'package:mohamoon_mohamoon/app/modules/add_lawyer_detail/views/pages/edit_image_page.dart';
+import 'package:flutter/material.dart';
+
 import 'package:mohamoon_mohamoon/app/services/lawyer_category_service.dart';
 import 'package:mohamoon_mohamoon/app/services/lawyer_service.dart';
+import 'package:mohamoon_mohamoon/app/services/lawyer_country_service.dart';
 import 'package:mohamoon_mohamoon/app/services/user_service.dart';
 
 //import 'package:mohamoon_mohamoon/app/utils/constants.dart';
 import 'package:mohamoon_mohamoon/app/utils/exceptions.dart';
 
-
 class AddLawyerDetailController extends GetxController
-    with StateMixin<List<LawyerCategory>> {
+    with StateMixin<List<dynamic>> {
   //TODO: Implement AddLawyerDetailController
   final List<bool> selected = List.generate(100, (i) => false);
+  List<String> countries = [];
 
+  late String country = '';
   final count = 0.obs;
-
   var formkey = GlobalKey<FormState>();
   var lawyerName = ''.obs;
   var lawyerPhone = ''.obs;
   var lawyerHospital = 'English';
   var shortBiography = ''.obs;
+
+  // var country = ''.obs;
   List<String>? categories = [];
   Lawyer? lawyer = Get.arguments;
   var profilePicUrl = ''.obs;
   var certificateUrl = ''.obs;
-  var lawyerCertificateUrl =''.obs;
+  var lawyerCertificateUrl = ''.obs;
   bool isEdit = false;
 
   @override
   void onInit() {
     super.onInit();
+    initLawyerCountry();
 
     if (lawyer != null) {
       isEdit = true;
@@ -51,7 +57,6 @@ class AddLawyerDetailController extends GetxController
       lawyerCertificateUrl.value = lawyer!.certificateUrl!;
       update();
     }
-
   }
 
   @override
@@ -76,7 +81,7 @@ class AddLawyerDetailController extends GetxController
 
   void uploadCertificate(File filePath) {
     EasyLoading.show(maskType: EasyLoadingMaskType.black);
-    UserService().updatePhoto(filePath).then((certifUrl) {
+    UserService().uploadCertificate(filePath).then((certifUrl) {
       certificateUrl.value = certifUrl;
       EasyLoading.dismiss();
       Get.back();
@@ -112,6 +117,16 @@ class AddLawyerDetailController extends GetxController
     });
   }
 
+  void initLawyerCountry() async {
+    countries = await LawyerCountryService().getListLawyerCountry();
+    // dropDownCountries = countries.map((e) {
+    //   return DropdownMenuItem(
+    //     value: e,
+    //     child: Text(e),
+    //   );
+    // }).toList();
+  }
+
   void saveLawyerDetail() async {
     if (lawyer == null) {
       if (profilePicUrl.value.isEmpty) {
@@ -129,30 +144,31 @@ class AddLawyerDetailController extends GetxController
       }
     }
 
-    if (formkey.currentState!.validate() && categories != null && categories!.isNotEmpty) {
+    if (formkey.currentState!.validate() &&
+        categories != null &&
+        categories!.isNotEmpty) {
       formkey.currentState!.save();
       EasyLoading.show(
           status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
       try {
         await LawyerService().saveLawyerDetail(
-            lawyerName: lawyerName.value,
-            lawyerPhone: lawyerPhone.value,
-            hospital: lawyerHospital,
-            shortBiography: shortBiography.value,
-            pictureUrl: profilePicUrl.value,
-            certificateUrl: certificateUrl.value,
-            categories: categories!,
-            isUpdate: isEdit,);
+          lawyerName: lawyerName.value,
+          lawyerPhone: lawyerPhone.value,
+          hospital: lawyerHospital,
+          shortBiography: shortBiography.value,
+          pictureUrl: profilePicUrl.value,
+          certificateUrl: certificateUrl.value,
+          categories: categories!,
+          country: country,
+          isUpdate: isEdit,
+          isOnline: lawyer!.isOnline!,
+        );
         EasyLoading.dismiss();
         Get.offNamed('/dashboard');
-
       } catch (e) {
-
         Fluttertoast.showToast(msg: e.toString());
         EasyLoading.dismiss();
       }
     }
   }
 }
-
-

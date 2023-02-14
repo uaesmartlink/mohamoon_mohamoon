@@ -15,6 +15,8 @@ class LawyerService {
       required String pictureUrl,
       required String certificateUrl,
       required List<String> categories,
+      required String country,
+      required bool isOnline,
       bool isUpdate = false}) async {
     try {
       List cat = [];
@@ -25,24 +27,32 @@ class LawyerService {
       }
       CollectionReference lawyers =
           FirebaseFirestore.instance.collection('Lawyers');
-      Map<String, dynamic> lawyersData = {
-        'lawyerName': lawyerName,
-        'lawyerPhone': lawyerPhone,
-        'lawyerHospital': hospital,
-        'lawyerBiography': shortBiography,
-        'lawyerPicture': pictureUrl,
-        'certificateUrl': certificateUrl,
-        'categories': FieldValue.arrayUnion(categories),
-        'lawyerBasePrice': 10,
-        'accountStatus': 'nonactive',
-        'isOnline': false,
-      };
+
 
       if (isUpdate) {
+        Map<String, dynamic> lawyersData = {
+          'lawyerPhone': lawyerPhone,
+          'lawyerHospital': hospital,
+          'lawyerBiography': shortBiography,
+          'lawyerPicture': pictureUrl,
+        };
         lawyersData['updatedAt'] = FieldValue.serverTimestamp();
         await lawyers.doc(LawyerService.lawyer!.lawyerId).update(lawyersData);
         await getLawyer(forceGet: true);
       } else {
+        Map<String, dynamic> lawyersData = {
+          'lawyerName': lawyerName,
+          'lawyerPhone': lawyerPhone,
+          'lawyerHospital': hospital,
+          'lawyerBiography': shortBiography,
+          'lawyerPicture': pictureUrl,
+          'certificateUrl': certificateUrl,
+          'categories': FieldValue.arrayUnion(categories),
+          'lawyerBasePrice': 10,
+          'accountStatus': 'nonactive',
+          'lawyerCountry': country,
+          'isOnline': isOnline,
+        };
         lawyersData['createdAt'] = FieldValue.serverTimestamp();
         lawyersData['updatedAt'] = FieldValue.serverTimestamp();
         var lawyer = await lawyers.add(lawyersData);
@@ -102,13 +112,11 @@ class LawyerService {
     }
   }
 
-  Future<bool?> getIsOnline() async{
-    try{
-        return lawyer!.isOnline;
-    }catch(e){
+  Future<bool?> getIsOnline() async {
+    try {
+      return lawyer!.isOnline;
+    } catch (e) {
       return Future.error(e.toString());
     }
-
-    return false;
   }
 }

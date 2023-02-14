@@ -17,6 +17,8 @@ import 'package:mohamoon_mohamoon/app/modules/forgot_password/bindings/forgot_pa
 import 'package:mohamoon_mohamoon/app/modules/forgot_password/views/forgot_password_view.dart';
 import 'package:mohamoon_mohamoon/app/modules/home/bindings/home_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/home/views/home_view.dart';
+import 'package:mohamoon_mohamoon/app/modules/lawyer_country/views/lawyer_country_view.dart';
+import 'package:mohamoon_mohamoon/app/modules/lawyer_country/bindings/lawyer_country_binding.dart';
 
 import 'package:mohamoon_mohamoon/app/modules/login/bindings/login_binding.dart';
 import 'package:mohamoon_mohamoon/app/modules/login/views/login_view.dart';
@@ -71,6 +73,11 @@ class AppPages {
       page: () => DashboardView(),
       binding: DashboardBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.LAWYER_COUNTRIES,
+    //   page: () => LawyerCountryView(),
+    //   binding: LawyerCountryBinding(),
+    // ),
     GetPage(
       name: _Paths.PROFILE,
       page: () => ProfileView(),

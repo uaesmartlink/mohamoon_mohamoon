@@ -35,7 +35,6 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
     username.value = UserService().currentUser!.displayName!;
     profilePic.value = await UserService().getPhotoUrl();
     print("Hello");
-    print(profilePic);
     await getListAppointment();
     //await getListReview(lawyer);
     getBalance();
@@ -63,7 +62,6 @@ class HomeController extends GetxController with StateMixin<DashboardModel> {
           await TimeSlotService().getOrderedTimeSlot(limit: 5);
     } catch (err) {
       print(err);
-      print('--------------');
       printError(info: err.toString());
     }
   }
