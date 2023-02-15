@@ -85,8 +85,10 @@ class AuthService {
     return false;
   }
 
+
   Future logout() async {
-    _auth.signOut();
+    LawyerService().makeOffline();
+    LawyerService.lawyer!.isOnline = false;
     LawyerService.lawyer = null;
   }
 }

@@ -35,6 +35,7 @@ class LawyerService {
           'lawyerHospital': hospital,
           'lawyerBiography': shortBiography,
           'lawyerPicture': pictureUrl,
+          'isOnline': lawyer!.isOnline,
         };
         lawyersData['updatedAt'] = FieldValue.serverTimestamp();
         await lawyers.doc(LawyerService.lawyer!.lawyerId).update(lawyersData);
@@ -107,6 +108,18 @@ class LawyerService {
           .doc(lawyer!.lawyerId)
           .update({'isOnline': isOnline});
       lawyer!.isOnline = isOnline;
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future makeOffline() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Lawyers')
+          .doc(lawyer!.lawyerId)
+          .update({'isOnline': false});
+      lawyer!.isOnline = false;
     } catch (e) {
       return Future.error(e.toString());
     }

@@ -45,6 +45,7 @@ class AddLawyerDetailController extends GetxController
   @override
   void onInit() {
     super.onInit();
+    initLawyerCategory();
     // initLawyerCountry();
 
     if (lawyer != null) {
@@ -144,13 +145,15 @@ class AddLawyerDetailController extends GetxController
         return;
       }
     }
-
+    print("111");
     if (formkey.currentState!.validate() &&
         categories != null &&
         categories!.isNotEmpty) {
       formkey.currentState!.save();
       EasyLoading.show(
           status: 'loading...'.tr, maskType: EasyLoadingMaskType.black);
+      print("222");
+
       try {
         await LawyerService().saveLawyerDetail(
           lawyerName: lawyerName.value,
@@ -162,8 +165,9 @@ class AddLawyerDetailController extends GetxController
           categories: categories!,
           country: country,
           isUpdate: isEdit,
-          isOnline: lawyer!.isOnline!,
+          isOnline: false,
         );
+        print("333");
         EasyLoading.dismiss();
         Get.offNamed('/dashboard');
       } catch (e) {
